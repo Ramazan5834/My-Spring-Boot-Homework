@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="adminLayout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content" class="container mt-3"
+		style="width: 70%">
+		<div th:if="${#lists.size(unconfirmedBills)>0}">
+
+			<div th:each="unconfirmedBill: ${unconfirmedBills}">
+				<div class="card">
+					<div class="card-body">
+					<h5 class="card-title"
+							th:text="'Fatura Tarihi: '+${unconfirmedBill.bill_date}"></h5>
+						<p class="card-text"
+							th:text="'Müşteri Adı: '+${unconfirmedBill.customer_name}"></p>
+						<p class="card-text"
+							th:text="'Müşteri Soyadı: '+${unconfirmedBill.customer_surname}"></p>
+						<p class="card-text"
+							th:text="'Fatura Total Fiyat: '+${unconfirmedBill.total_price}+'₺'"></p>
+					
+						<a class="btn btn-success" th:href="@{/admin/confirmBill/{id}(id=${unconfirmedBill.id})}">Onayla</a> <a
+							class="btn btn-warning" th:href="@{/admin/cancelTheBill/{id}(id=${unconfirmedBill.id})}">İptal Et</a>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+		<div th:unless="${#lists.size(unconfirmedBills)>0}">
+			<h3>Şu Anda Onaylanmayan Fatura Yok</h3>
+		</div>
+	</div>
+
+</body>
+</html>

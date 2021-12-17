@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="adminLayout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content" class="container mt-3"
+		style="width: 70%">
+		<div th:if="${#lists.size(confirmedBills)>0}">
+
+			<div th:each="confirmedBill: ${confirmedBills}">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title"
+							th:text="'Fatura Tarihi: '+${confirmedBill.bill_date}"></h5>
+						<p class="card-text"
+							th:text="'Müşteri Adı: '+${confirmedBill.customer_name}"></p>
+						<p class="card-text"
+							th:text="'Müşteri Soyadı: '+${confirmedBill.customer_surname}"></p>
+						<p class="card-text"
+							th:text="'Fatura Total Fiyat: '+${confirmedBill.total_price}+'₺'"></p>
+					</div>
+					<hr>
+
+				</div>
+			</div>
+
+		</div>
+		<div th:unless="${#lists.size(confirmedBills)>0}">
+			<h3>Şu Anda Onaylanan Fatura Yok</h3>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="adminLayout">
+
+<head>
+<title>Admin Home</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h3>Admin Paneline Hoş Geldiniz</h3>
+		<h5>Bu Panelden Yapabilecekleriniz :</h5>
+		<ul>
+			<li>Ürün Ekleme,Silme,Güncelleme</li>
+			<li>Fatura Onaylama</li>
+			<li>Geçmiş Faturaları Listeleme</li>
+		</ul>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Login - SB Admin</title>
+<link th:href="@{/assets/css/styles.css}" rel="stylesheet" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+	crossorigin="anonymous"></script>
+</head>
+<body class="bg-primary">
+	<div id="layoutAuthentication">
+		<div id="layoutAuthentication_content">
+			<main>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-5">
+							<div class="card shadow-lg border-0 rounded-lg mt-5">
+								<div class="card-header">
+									<h3 class="text-center font-weight-light my-4">Giriş Ekranı</h3>
+								</div>
+								<div class="card-body">
+									<form th:action="@{/login}" method="post">
+										<div class="form-floating mb-3">
+											<input class="form-control" id="inputEmail" type="email"
+												placeholder="name@example.com" name="username" /> <label
+												for="inputEmail">Email</label>
+										</div>
+										<div class="form-floating mb-3">
+											<input class="form-control" id="inputPassword"
+												type="password" placeholder="Password" name="password" /> <label
+												for="inputPassword">Parola</label>
+										</div>
+<!-- 										<div class="form-check mb-3"> -->
+<!-- 											<input class="form-check-input" id="inputRememberPassword" -->
+<!-- 												type="checkbox" value="" name="remember-me" /> <label -->
+<!-- 												class="form-check-label" for="inputRememberPassword">Remember -->
+<!-- 												Password</label> -->
+<!-- 										</div> -->
+										<div
+											class="d-flex align-items-center justify-content-between mt-4 mb-0">
+											<button type="submit" class="btn btn-primary btn-block"
+												>Giriş Yap</button>
+										</div>
+										<br>
+										<div class="row">
+											<div class="col-xs-12">
+												<div th:if="${param.error}"
+													class="alert alert-danger alert-dismissable">
+													<p>
+														<i class="icon fa fa-ban"></i> <span>Invalid Email and
+															Password.</span>
+													</p>
+												</div>
+												<div th:if="${param.logout}"
+													class="alert alert-info alert-dismissable">
+													<p>
+														<i class="icon fa fa-info"></i> <span>You have been
+															logged out.</span>
+													</p>
+												</div>
+												<div th:if="${msg!=null}"
+													class="alert alert-warning alert-dismissable">
+													<p>
+														<i class="icon fa fa-warning"></i> <span th:text="${msg}"></span>
+													</p>
+												</div>
+											</div>
+
+										</div>
+
+									</form>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script th:src="@{/assets/js/scripts.js}"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="employeeLayout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content">
+
+		<div class="w-50 container">
+			<h1 class="mt-4">Fatura Oluşturma</h1>
+			<form class="mt-3" th:action="@{/employee/saveBill}"
+				th:object="${modelBill}" method="POST">
+				<input type="hidden" th:field="*{id}" />
+				<input type="hidden" th:field="*{total_price}" />
+				<div class="form-group">
+					<label for="exampleInputEmail1">Müşteri Adı:</label> <input type="text"
+						class="form-control" placeholder="Ürün Adını Giriniz"
+						th:field="*{customer_name}">
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="exampleInputEmail1">Müşteri Soyadı</label> <input
+						type="text" class="form-control"
+						placeholder="Ürün Fiyatını Giriniz" th:field="*{customer_surname}">
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="exampleInputEmail1">Total Miktar</label> <input
+						type="text" class="form-control"
+						placeholder="Ürün Stoğunu Giriniz" th:field="*{total_price}" disabled="disabled">
+				</div>
+				<br>
+				<button type="submit" class="btn btn-primary">Onayla</button>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

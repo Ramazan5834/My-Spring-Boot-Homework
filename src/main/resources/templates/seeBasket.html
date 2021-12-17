@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="employeeLayout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content" class="container mt-3"
+		style="width: 70%">
+		<div th:if="${#lists.size(soldProducts)>0}">
+			<div th:each="soldProduct : ${soldProducts}">
+				<div th:each="product: ${products}">
+					<div class="card" th:if="${product.id == soldProduct.product_id}">
+						<div class="card-body">
+							<h5 class="card-title" th:text="'Ürün adı: '+${product.name}"></h5>
+							<p class="card-text"
+								th:text="'Ürün adedi: '+${soldProduct.piece}"></p>
+							<p class="card-text"
+								th:text="'Ürün adet fiyatı: '+${product.price}+'₺'"></p>
+						</div>
+						<br>
+					</div>
+				</div>
+			</div>
+			<br> <a th:href="@{/employee/createBill}"
+				class="btn btn-primary">Faturayı Oluştur</a> <a
+				th:href="@{/employee/cancelTheSale}" class="btn btn-danger">Satışı
+				İptal Et</a>
+		</div>
+		<div th:unless="${#lists.size(soldProducts)>0}">
+			<h3>Sepetiniz Şu Anda Boş</h3>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="employeeLayout">
+
+<head>
+<title>User Home</title>
+</head>
+<body>
+	<div layout:fragment="content">
+<!-- 		<p> -->
+<!-- 			Welcome <span sec:authentication="principal.username">User</span> -->
+<!-- 		</p> -->
+		<h3>Satış Temsilcisi Paneline Hoş Geldiniz</h3>
+		<h5>Bu Panelden Yapabilecekleriniz :</h5>
+		<ul>
+		<li>Ürün Satışı</li>
+		<li>Fatura Oluşturma</li>
+		</ul>
+	</div>
+
+</body>
+
+</html>
